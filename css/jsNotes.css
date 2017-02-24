@@ -1,0 +1,39 @@
+body{background:#fff;overflow-x: hidden;}
+.main{right:0;padding:15px 15px 15px 215px;}
+.slide-box{background:#373e40;color:#fff;width: 200px;position:fixed;top:0;left:0;bottom:0;overflow: hidden;}
+.slide-box h1{font-size:18px;text-align:center;padding:10px 0;font-weight:100;padding-right: 20px;}
+.slide-box .slide{width:220px;height:100%;overflow-y: auto;}
+.slide-box ul li{padding:10px 25px;font-size:14px;cursor:pointer;position: relative;}
+.slide-box ul li:after{content:'';background:#4E5465;position:absolute;top:0;left:0;bottom:0;width:0;z-index: -1;transition:0.2s; -moz-transition:0.2s;-webkit-transition:0.2s;-o-transition:0.2s;}
+.slide-box ul li:hover:after{width:100%;}
+.slide-box ul li.on::after{background:#00b38c;width:100%;}
+.slide-box ul li em{color:rgba(255,255,255,0.5);font-size:12px;}
+.box{padding-bottom:30px;}
+.box h2{font-size: 18px;font-weight: 100;position: relative;z-index: 1;height: 20px;border-bottom: 1px solid #ddd;margin-bottom: 20px;}
+.box h2 span{position: absolute;top: 5px;left: 20px;background: #fff;padding: 0 10px;}
+pre{border:solid #e2e2e2;border-width:1px 1px 1px 4px;letter-spacing: 1px;}
+.pre-ol {padding: 45px 20px 20px 0;border-left:50px solid #f8f8f8;position: relative;}
+.pre-ol:after {position: absolute;content: 'code';top: 0; left: -40px;right: 0;background: #f8f8f8;z-index: 2;padding: 5px 8px;font-size: 12px;color: #999;}
+pre ol li {counter-increment: numberlist;margin-left: -40px;line-height: 160%;}
+pre ol li:before {content: counter(numberlist);position:absolute;left:-45px;vertical-align: middle;width: 30px;font-size: 12px;text-align: right;margin-right: 35px;color: #999;moz-user-select: -moz-none;-moz-user-select: none;-o-user-select: none;-khtml-user-select: none;-webkit-user-select: none;-ms-user-select: none;user-select: none;}
+/*定义滚动条高宽及背景 高宽分别对应横竖滚动条的尺寸*/
+::-webkit-scrollbar{width:10px;height:10px;background-color:#fff;}
+/*定义滚动条轨道 内阴影+圆角*/
+::-webkit-scrollbar-track{background-color: #eee;border:none;}
+/*定义滑块 内阴影+圆角*/
+::-webkit-scrollbar-thumb{background-color: #999;}
+.box p{color: #666;border-left:4px solid #00b38c;margin:20px 0 10px;padding: 10px;background: #f8f8f8;}
+.table-obj{width:100%;border-left:1px solid #e2e2e2;border-top:1px solid #e2e2e2;min-width:800px;}
+.table-obj tr td{border-bottom:1px solid #e2e2e2;border-right:1px solid #e2e2e2;padding:10px 0;text-align:center;}
+i.icon-home{width:13px;height:10px;border:1px solid #fff;border-top:none;position:relative;display: inline-block;margin:0 10px -2px 2px;}
+i.icon-home:after{content: '';position:absolute;width:14px;height:14px;border:solid #fff;border-width:1px 1px 0 0;transform: rotate(-45deg);top:-4px;left:-2px;}
+i.icon-home:before{content: '';position: absolute;width: 3px;height:5px;border:1px solid #fff;bottom:-1px;left:3px;}
+.box i.icon-home,.box i.icon-home:after,.box i.icon-home:before{border-color: #999;}
+.dateBox{width: 400px;}
+.dateBox table{width: 100%;border-top: 1px solid #e2e2e2;border-left: 1px solid #e2e2e2;}
+.dateBox tr td {border-right: 1px solid #e2e2e2; border-bottom: 1px solid #e2e2e2;padding: 10px 20px;text-align: center;}
+.dateBox tr td.on {background: #00b38c;color: #fff;}
+.dateBox .weeks td {background: #eee;}
+.dateBox .dateTitile {text-align: center;}
+.nav-box span{display:inline-block;padding:8px 10px;background:#f8f8f8;margin:8px 10px 8px 0;cursor: pointer;transition:0.2s; -moz-transition:0.2s;-webkit-transition:0.2s;-o-transition:0.2s;}
+.nav-box span:hover{color: #00b38c;background:#eee;}

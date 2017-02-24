@@ -1,0 +1,1410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>正在整理中~</title>
+    <link rel="stylesheet" href="../css/public.css">
+    <link rel="stylesheet" href="../css/jsNotes.css">
+</head>
+<body>
+<div class=main>
+    <div class=box>
+        <h2 data-v=0><span>函数写法</span></h2>
+        <p>函数：代码集合,完成某种特定功能；一次编写,多次调用</p>
+        <pre>
+            function 函数名(参数1 , 参数2 , 参数3 , ....){
+                语句
+            }
+            //示例
+            function swap(a,b){
+                var temp;
+                temp=a;
+                a=b;
+                b=temp;
+                console.info('a='+a',b='+b);
+            }
+            swap(4,6);
+
+            //高级写法
+            //function square(x){return x*x;};
+
+            //var f=function square(x){console.info(square);return x*x;};
+
+            //console.info(f(5));
+
+            var f=function(x){return x*x;};
+
+            console.info(f(5));
+
+            function setValue(x){return (x+10)};
+            var f=function(x){return setValue(x)*setValue(x);};
+            console.info(f(5));
+        </pre>
+    </div>
+    <div class=box>
+        <h2 data-v=0><span>递归算法</span></h2>
+        <p>递归：在函数内部,直接调用自己</p>
+        <pre>
+            function fact(n){
+                if(n<=1) { return 1;}
+                return n*fact(n-1);
+            }
+            console.info(fact(5));
+        </pre>
+    </div>
+    <div class="box">
+        <h2 data-v=0><span>函数实例</span></h2>
+        <pre>
+            function add(x,y){return x+y;}
+            function sub(x,y){return x-y;}
+            function mul(x,y){return x*y;}
+            function div(x,y){return x/y;}
+
+            function operate(op,x,y){
+                //var result=op(x,y);
+                //console.info(result);
+                return op(x,y);
+            }
+            //operate(add,3,7);
+            console.info(operate(add,3,7));
+
+            /*
+            function operate(str,x,y){
+                if(str=='+'){
+                    return add(x,y);
+                }else
+                if(str=='-'){
+                    return sub(x,y);
+                }else
+                if(str=='*'){
+                    return mul(x,y);
+                }else
+                if(str=='/'){
+                    return div(x,y);
+                }else{
+                    return '输入错误';
+                }
+            }
+            console.info(operate('+',4,5));
+            */
+        </pre>
+    </div>
+
+    <div class="box">
+        <h2 data-v=0><span>内置对象</span></h2>
+        <p>对象：世间万物皆对象；静态特性和动态特性</p>
+        <table class="table-obj">
+            <tr>
+                <td>对象名称</td>
+                <td>Arguments</td>
+                <td>Array</td>
+                <td>Boolean</td>
+                <td>Date</td>
+                <td>Error</td>
+                <td>Function</td>
+                <td>Math</td>
+                <td>Number</td>
+                <td>Object</td>
+                <td>RegExp</td>
+                <td>String</td>
+            </tr>
+            <tr>
+                <td>对象说明</td>
+                <td>函数参数集合</td>
+                <td>数组</td>
+                <td>布尔对象</td>
+                <td>日期时间</td>
+                <td>异常对象</td>
+                <td>函数构造器</td>
+                <td>数学对象</td>
+                <td>数值对象</td>
+                <td>基础对象</td>
+                <td>正则表达式对象</td>
+                <td>字符串对象</td>
+            </tr>
+        </table>
+    </div>
+    <div class="box">
+        <h2 data-v=0><span>数组操作</span></h2>
+        <p>创建数组</p>
+        <pre>
+            //创建一维数组
+            var a = new Array();
+            var a = new Array(5);
+            var a = new Array(10,'aa');
+            var a = [2,4,6,8];
+            var a = [2,4,,8]; 此时第3个值为undefined
+            var a = [2,4,,]; 此时数组里只有3个元素;最后一个 , 是可选的
+
+            //javascript无法直接声明多维组
+            //创建多维数组
+            var t = new Array(5);
+            for(var i = 0;i < t.length;i++){
+                t[i] = new Array(5);
+            }
+        </pre>
+        <p>数组读写</p>
+        <pre>
+            var a=new Array(5);
+            var max;
+            for(var i = 0;i < a.length;i++){
+                a[i]=parseInt(rompt('请输入'+(i+1)+'数据',0));
+            }
+            //console.info(a)
+            max = a[0];
+            for(var i = 1;i < a.length;i++){
+                if(max <= a[i]){
+                    max = a[i];
+                }
+            }
+            console.info(max);
+        </pre>
+        <p>数组遍历</p>
+        <pre>
+            var a = [45,56,7,,1];
+            //for(var i = 0;i < a.length;i++){
+            //	第四个数为undefined
+            // 	if(i!==undefined){
+            //		console.info('数组的第'+i+'个数字为+'a[i]);
+            //	}
+            //}
+            for(var index in a){
+                console.info('数组的第'+parseInt(i)+'个数字为+'a[i]);
+            }
+        </pre>
+        <p>冒泡排序</p>
+        <pre>
+            var a=[3,4,5,23,45,6,1];
+            for(var i = 1;i < a.length;i++){
+                for(var j = 0;j < a.length-1; j++){
+                    if(a[j] > a[j+1]){
+                        var temp = a[j];
+                        a[j] = a[j+1];
+                        a[j+1] = temp;
+                    }
+                }
+            }
+            console.info(a);
+        </pre>
+        <p>数组：sort</p>
+        <pre>
+            var a = [33,2,444,111,555];
+            /*
+            a.sort();
+            默认根据字母顺序排列
+            console.info(a);
+            111,2,33,444,555
+            */
+
+            /*
+            a.sort(function(a,b){
+                return a-b;
+            })
+            根据数字大小排序
+            console.info(a)
+            2,33,111,444,555
+            */
+
+            var b = ['ant','Bug','cat','Dot'];
+            /*
+            b.sort();
+            默认根据字母顺序排列先大写.后小写
+            console.info(b);
+            Bug,Dot,ant,cat
+            */
+            b.sort(function(x,y){
+                //转小写
+                var x = x.toLowerCase();
+                var y = y.toLowerCase();
+                if(x < y) return -1;
+                if(x > y) return 1;
+                //转大写toUpperCase();
+            })
+            console.info(b);
+            //ant,Bug,cat,Dot
+        </pre>
+        <p>数组：push,pop；unshift,shift；Join；Reverse；Concat；Slice；Splice；toString</p>
+        <pre>
+            //数组增加删除元素
+            var a = [22,3,111,44];
+            //push将新元素加到结尾
+            a.push('a');
+            a.pop();
+            console.info(a);
+            //unshift将新元素加到头部
+            a.unshift('b');
+            a.shift();
+            console.info(a);
+
+            //Join通过特定字符把数组变成字符串
+            console.info(a.join(':'));
+            //22:2:111:44 返回字符串,不会对原数组改变
+
+            //Reverse数组颠倒
+            console.info(a.reverse());
+            //44,111,2,22 改变原数组
+
+            //Concat连接数组中的元素
+            console.info(a.concat('www'));
+            //22,3,111,44,www 返回一个新数组
+
+            //Slice返回子数组
+            console.info(a.slice(2));
+            //返回[111,44] 不会改变原数组
+            console.info(a.slice(1,2));
+            //返回[3] 不算结束位置的元素
+
+            //Splice在数组中插入或删除元素
+            //第一个参数为删除元素的下标位置,
+            //第二个参数为删除的个数,
+            //第三个...在删除的位置插入的元素
+            console.info(a.splice(2));//[111,44]
+            console.info(a);//[22,3]
+
+            //toString转成字符串
+            console.info(a.toString());
+        </pre>
+    </div>
+    <div class="box">
+        <h2 data-v=0><span>字符串操作</span></h2>
+        <p>创建字符串对象</p>
+        <pre>
+            var str = new String('hellow');
+            var str='hellow';
+        </pre>
+        <p>字符串操作：indexOf，lastIndexOf，charAt，charCodeAt，toLowerCase，toUpperCase，Split，slice，Substr，substring</p>
+        <pre>
+            //indexOf(searchString第一个字符出现的位置 , 从position(可选)位置开始);
+            //indexOf(searchString最后一个字符出现的位置 , 从position(可选)位置开始);
+            var str = 'Hello,world';
+            //var index = str.indexOf('Hello');
+            //console.info('Hello在字符串中出现的位置为:'+index);//0
+
+            var index = str.indexOf('o');  //'o',5
+            console.info('o在字符串中出现的位置为:'+index);//4  //7
+
+            var i =str.lastIndexOf('o');
+            console.info('o在字符串中最后出现的位置为:'+i);//7
+
+            //charAt(5),返回字符串中位置为3的字符
+
+            //charCodeAt(5),返回字符串中位置为3的ASCII代码
+
+            //toUpperCase(),字符串转为大写字母
+
+            //toLowerCase(),字符串转为小写字母
+
+            //split(separator,linmit)
+            //将字符串以separator作为分割符切割成多个子字符串,作为一个数组返回.
+            //linmit(可选)表示数组的最大长度,超过的部分将被舍弃
+            //如果split方法没有任何参数,则返回仅包含字符串本身,仅有一个元素的数组.
+            var str = 'a,b,c,d,e,f';
+            var a = str.split('');
+            var temp='';
+            for(var index in a){
+                temp += '数组中第'+(parseInt(index)+1)+'个元素为:'+a[index]
+            }
+            console.info(temp);
+
+            //slice(start,end)/substring(start,end)
+            //返回字符串中起始位置为start,结束位置为end(不含end)的字符串
+            var str = 'abcdefg';
+            console.info(str.slice(1,3));//bc
+            console.info(str.substring(1,3));//bc
+
+            //substr(start,length)
+            //返回字符串起始位置为start,长度为length的子字符串
+            console.info(str.substr(1,3));//bcd
+        </pre>
+        <p>字符串实例：邮箱验证</p>
+        <pre>
+            var eval='123@.com';
+            if(eval!=''){
+                if(eval.indexOf('@')!=-1){
+                    if(eval.indexOf('.')!=-1){
+                        var a = eval.split('@');
+                        if(a[0].length > 3 && a[1].length > 2){
+                            alert('正确')
+                        }else{
+                            alert('长度错误')
+                        }
+                    }else{
+                        alert('格式错误')
+                    }
+                }else{
+                    alert('格式错误')
+                }
+            }
+            else{
+                alert('不能为空')
+            }
+        </pre>
+    </div>
+    <div class="box">
+        <h2 data-v=0><span>数学对象</span></h2>
+        <p>数学对象：Abs，Ceil，Floor，Max，Min，Pow，Round，Squt，random</p>
+        <pre>
+            Math.abs(x) //x的绝对值
+
+            Math.ceil(x) //向上取整
+
+            Math.floor(x) //仅保留整数
+
+            Math.max(x,y,z) //最大值
+
+            Math.min(x,y,z) //最小值
+
+            Math.pow(x,y) //x的y次幂
+
+            Math.round(x) //四舍五入
+
+            Math.squt(x) //x的平方根
+
+            Math.random() //返回0~1的随机数
+        </pre>
+        <p>生成随机颜色</p>
+        <pre>
+            var red = Math.ceil(Math.random()*255);
+            var green = Math.ceil(Math.random()*255);
+            var blue = Math.ceil(Math.random()*255);
+            var color = '#'+red.toString(16)+green.toString(16)+blue.toString(16);
+            alert(color);
+        </pre>
+    </div>
+    <div class="box">
+        <h2 data-v=0><span>日期对象</span></h2>
+        <p>创建日期对象与方法</p>
+        <pre>
+            var myDate = new Date();
+            var myDate = new Date(年,月,日,时,分,秒);
+            var myDate = new Date(毫秒数);
+
+            //Date()方法组
+            //Get方法组
+            //Set方法组
+            //转换方法组
+
+            var myDate = new Date();//创建日期对象
+            var year = myDate.getFullYear();//得到年
+            var month = myDate.getMonth();//得到月
+            var day = myDate.getDate();//得到日
+            var hour = myDate.getHours();//得到时
+            var minute = myDate.getMinutes();//得到分
+            var second  = myDate.getSeconds();//得到秒
+            var week = myDate.getDay();//得到周
+
+            //var str = '当前日期:'+year+'年'+(month+1)+'月'+day+'日';
+            //str += hour+'时'+minute+'分'+second+'秒'+'星期'+week;
+
+            //转换方法组
+            //var str = myDate.toDateString();
+            var str = myDate.toLocaleDateString();
+
+            console.info(str);
+        </pre>
+        <p>实例：日历</p>
+        <div class="dateBox"></div>
+    </div>
+    <div class="box">
+        <h2 data-v=0><span>正则表达式</span></h2>
+        <p>正则表达式：模式匹配和文本检索与替换；作用：数据有效性验证、替换、检索</p>
+        <pre>
+            //实例：正则表达式邮箱验证
+            var email='12306@168.com';
+            var reg = /^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/;
+            if(reg.test(email)){
+                alert('邮箱格式正确');
+            }else{
+                alert('邮箱格式错误');
+            }
+        </pre>
+    </div>
+    <div class="box">
+        <h2 data-v=0><span>自定义对象</span></h2>
+        <p>面向对象用法</p>
+        <pre>
+            /*
+            var s = new Object();
+            s.name = 'xkf';
+            s.age = 32;
+            alert(s.name);
+            */
+
+            /*
+            var s = {};
+            s.name = 'xkf';
+            s.age = 23;
+            s.show = function(){
+                alert(s.name+'：'+s['age']);
+            };
+            s.show();
+            */
+
+            /*
+            var s = {
+                name : 'xkf',
+                age :23,
+                show : function(){
+                    alert(s.name+'：'+s['age']);
+                }
+            }
+            s.show();
+            */
+        </pre>
+        <p>原型对象</p>
+        <pre>
+            function Person(name,age){
+                this.name = name;
+                this.age = age;
+                this.show = function(){
+                    alert(this.name + '：'+this.age)
+                }
+            }
+            var s = new Person('xkf',23);
+            var d = new Person('zdd',22);
+            s.show();
+            //属性返回对创建此对象的数组函数的引用
+            //alert(s.constructor == Person);
+            //与原型对象的关系
+            //alert(s instanceof Person);
+        </pre>
+        <p>Prototype</p>
+        <pre>
+            /*
+            function Cat(name){
+                this.name = name;
+                this.show = function(){
+                    alert(this.name);
+                }
+            }
+            var c1 = new Cat('冷狗');
+            var c2 = new Cat('二狗');
+            c1.show();
+            c2.show();
+            alert(c1.show == c2.show);//flase
+            //两地址对比.ture共同一地址.flase各开辟地址.造成空间浪费
+            */
+
+            function Cat(name){
+                this.name = name;
+            }
+            Cat.prototype.type='犬科';//继承属性
+            Cat.prototype.show = function(){
+                alert(this.name);
+            }
+            var c1 = new Cat('冷狗');
+            var c2 = new Cat('二狗');
+
+            //inPrototypeOf判断c1是不是Cat.prototype继承对象
+            alert(Cat.prototype.isPrototypeOf(c1));
+
+            //hasOwnProperty判断属性是构造函数的属性还是继承属性
+            alert(c1.hasOwnProperty('type'));//false 继承属性
+        </pre>
+        <p>Call；apply</p>
+        <pre>
+            //意义相同,使用方法不同
+            //Call(对象,参数)
+            //apply(对象,[参数])
+            //一个对象的方法在另一个对象的环境中执行
+            /*
+            function Animal(){
+                this.name = 'animal';
+                this.showName = function(){
+                    alert(this.name);
+                }
+            }
+            function Cat(){
+                this.name = 'cat';
+            }
+            var animal = new Animal();
+            var cat = new Cat();
+            //animal.showName.call(cat);//cat
+            Animal.call(cat);
+            cat.showName();//animal
+            */
+
+            function myFun(a,b,c){
+                this.a = a;
+                this.b = b;
+                this.c = c;
+            }
+            var myObject = new Object();
+            alert(myObject.a);
+            //myFun.call(myObject,23,45,67);
+            myFun.apply(myObject,[23,45,67]);
+            alert(myObject.a);//23
+        </pre>
+        <p>继承</p>
+        <pre>
+            /*
+            function Animal(){
+                this.s = 'animal'
+            }
+            function Cat(){
+                Animal.call(this);
+                this.name = 'cat';
+            }
+
+            var animal = new Animal();
+            var cat = new Cat();
+            alert(cat.s);
+            */
+
+            function Animal(){}
+            Animal.prototype.s = 'animal';
+            function Cat(){
+                this.name = 'cat';
+            }
+            //Cat.prototype.s = Animal.prototype.s;
+            Cat.prototype = Animal.prototype;
+            var animal = new Animal();
+            var cat = new Cat();
+            alert(cat.s);
+        </pre>
+    </div>
+    <div class="box">
+        <h2 data-v=1><span>函数</span></h2>
+        <p>回调函数</p>
+        <pre>
+            //将函数作为另一个函数的参数
+            function test1(){
+                alert('我是test1')
+            }
+            function test2(f){
+                f();
+            }
+            test2(test1);//我是test1
+
+            function test1(x,f){
+                return x+f();
+            }
+            function fu(){
+                return 100;
+            }
+            alert(test1(10,fu));//110
+
+            function test2(x,f){
+                return x+f(x);
+            }
+            function fu(x){
+                return x*x;
+            }
+            alert(test2(10,fu));//110
+
+            //使用函数的返回值作为另一个函数的参数
+            function fu(x){
+                return x*x;
+            }
+            function test3(x,f){
+                return x+f;
+            }
+            alert(test3(10,fu(10)));//这里fu(10)引用的是函数的返回值
+            alert(fu(10));//这里fu(10)引用的是函数的返回值
+            alert(fu);//这里的fu引用的是函数本身
+            //实例：找出3的倍数
+            function checkNum(_start,_ed,check){
+                for(i=_start; i < _ed ;i++){
+                    if(check(i)){
+                        console.log(i);
+                    }
+                }
+            }
+            function check(x){
+                if(x%3==0){
+                    return true;
+                }else{
+                    return false;
+                }
+            }
+            checkNum(1,100,check);
+        </pre>
+        <p>函数的内部属性</p>
+        <pre>
+            //在函数内部,有两个特殊对象: arguments、this
+
+            //arguments.length检测函数的参数个数
+            function sum(x,y){
+                alert(arguments.length);
+            }
+            //不检测定义时的个数
+            sum();//0
+            sum(12);//1
+            sum(12,34,56);//3  多余参数会被忽略
+            //实例：求多个数字的和
+            function sum(){
+                var result=0;
+                for(var i = 0;i < arguments.length;i++){
+                    result+=arguments[i];
+                }
+                return result;
+            }
+            alert(sum(12,3,4,56,32,12,78));
+
+            //this 指调用函数的对象
+            //函数在哪里调用了才决定this到底引用的是什么
+
+            //在函数外部使用this,this就指的是window对象
+            //console.info(this);
+            //全局变量可以看做window对象的属性
+            var x = 1;
+            console.info(window.x);
+            console.info(this.x);
+
+            //在函数内部
+            var x = 1;
+            function test(){
+                var x = 0;
+                console.info(x) //这里为0
+                console.info(this.x) //这里为1
+                console.info(this)
+            }
+            test();
+
+            //用new来调用,那么绑定的将是新创建的对象
+            var x = 1;
+            function test2(){
+                this.x = 100;
+            }
+            var obj = new test2();
+            console.info(x); //这里为1
+            console.info(obj.x) //这里为100
+
+            //作为某个对象的方法调用,这时this就指这个上级对象
+            var x = 1;
+            function test3(){
+                console.info(this.x);
+            }
+            var obj = {};
+            obj.x = 1000;
+            obj.m = test3;
+            console.info(x);//1
+            obj.m() //1000
+
+            //事件监听函数中的this
+            var div1 = document.getElementById('div1');
+            div1.onclick = function(){
+                console.info(this.innerHTML); //this指触发事件的元素
+            }
+
+            //length:当前函数接受的命名参数个数
+            function test(num1,num2,nmu3){
+                console.info(arguments.length);//0
+                console.info(test.length);//3
+            }
+            test();
+
+            //apply,call
+            function sum(num1,num2){
+                return num1 + num2;
+            }
+            function applySum1(num1,num2){
+                return sum.apply(this,[num1,num2]);
+            }
+            function callSum(num1,num2){
+                return sum.call(this,nmu1,nmu2);
+            }
+            console.info(sum(10,20));//30
+            alert(callSum(20,20));//40
+            console.info(applySum1(20,30));//50
+            //扩充函数作用域
+            var color = 'red';
+            var o = {color:'blue'};
+            function sayColor(){
+                alert(this.color);
+            }
+            sayColor();//red
+            sayColor.call(this);//red
+            sayColor.call(window)//red
+            sayColor.cass(o);//blue
+        </pre>
+    </div>
+    <div class="box">
+        <h2 data-v=1><span>面向对象</span></h2>
+        <p>创建对象的方法 -- 基本模式</p>
+        <pre>
+            //缺陷：如果创建多个对象会比较繁琐，效率低；实例与原型之间，看不出任何关系
+            var people1 = new Object();
+            people1.name = '孙悟空';
+            people1.weapon = '金箍棒';
+            //this是指的当前作用域下的对象,注意和谁调用这个方法有关,和在哪定义没关系
+            people1.run = function(){
+                return this.name+'的武器是'+this.weapon;
+            }
+            alert(people1.name);
+            alert(people1.run());//调用注意加()
+        </pre>
+        <p>创建对象的方法 -- 工厂模式</p>
+        <pre>
+            //原材料-加工-产品
+            //缺陷：创建的实例没有内在联系；没有使用new关系字，浪费资源
+            function ceatPeople(name,weapon){
+                var people = new Object();//可以类比为加工对象的原材料
+                people.name = name;
+                people.weapon = weapon;
+                people.run = function(){
+                    return this.name+'的武器是'+this.weapon;
+                }//以上步骤可以类比为加工对象的过程
+                return people;
+                //可以类比为产品加工完成
+            }
+            var wukong = ceatPeople('孙悟空','金箍棒');
+            var bajie = ceatPeople('猪八戒','九齿钉耙');
+            console.info(wukong.run());
+            console.info(bajie.run());
+            alert(wukong.run() == bajie.run());//false
+            //两个对象实例的地址是不同的，说明两个对象会占用两个地址空间的内存
+        </pre>
+        <p>创建对象的方法 -- 构造函数模式</p>
+        <pre>
+            //专门用来生成'对象'的函数
+            //缺陷：浪费内存
+            function fun(){
+                console.info(this);
+            }
+            fun();//window
+            new fun();//函数里的this就是新创建出来的对象
+
+            function ceatPeople(name,weapon){
+                this.name = name;
+                this.weapon = weapon;
+                this.run = function(){
+                    return this.name+'的武器是'+this.weapon;
+                }
+            }
+            var wujing = new ceatPeople('沙悟净','禅杖');
+            console.info(wujing.run());
+            //wujing是不是ceatPeople创建的对象
+            console.info(wujing instanceof ceatPeople);
+            var monster = new Object();
+            //对象冒充
+            ceatPeople.call(monster,'金角大王','紫金葫芦');
+            ceatPeople.apply(monster,['金角大王','紫金葫芦']);
+            console.info(monster.run());
+
+            var m1 = new ceatPeople('银角大王','幌金绳');
+            var m2 = new ceatPeople('银角大王','幌金绳');
+            console.info(m1.run == m2.run)//false
+            //两个对象实例的地址是不同的,说明两个对象会占用两个地址空间的内存
+        </pre>
+        <p>创建对象的方法 -- 原型模式</p>
+        <pre>
+            //每一个构造函数都有一个prototype属性,指向另一个对象
+            //这个对象的所有属性和方法都会被构造函数的实例继承
+            //可以把不变的属性和方法,直接定义在prototype对象上
+            //使用prototype,函数不会拷贝到每一个实例中,所有的实例共享prototype中的定义,节省了内存
+            //缺陷：没有参数,不能通过构造函数来传参,不能初始化属性的值
+            //属性指向的是对象,而不是函数时.函数共享不会造成问题,但对象却很少被多个实例共享
+            //如果共享的是对象就会造成问题
+            function Peopleobj(){}
+            Peopleobj.prototype.name = '牛魔王';
+            Peopleobj.prototype.weapon = '金钢圈';
+            Peopleobj.prototype.run = function(){
+                return this.name+'的武器是'+this.weapon;
+            }
+            var m1 = new Peopleobj();
+            var m2 = new Peopleobj();
+            var m3 = new job();
+            console.info(m1.run());
+            console.info(m2.run());
+            console.info(m1.run == m2.run)//true 说明他们的引用是同一个地址
+            //这里所有实例的方法,其实都是同一个内存地址,指向prototype对象,因此提高了效率
+
+            console.info(Peopleobj.prototype.isPrototypeOf(m1));//true
+            //m1是Peopleobj.prototype所创建的的对象
+
+            console.info(m1.hasOwnPropety('name'));//false
+            //name继承过来的属性
+            console.info(m1.hasOwnPropety('job'));//true
+            //job是本地属性
+            console.info('name',m1);//true
+            console.info('job',m1);//true
+            console.info('aaa',m1);//false
+            //in用来判断m1是不是有name属性
+
+            //其他写法
+            function Monster(){}
+            Monster.prototype = {
+                //原型字面量方式会将对象的constructor变为Object
+                //解决方法
+                constructor : Monster,//此处强制将prototype指向Monster构造函数
+                name : '托塔天王',
+                weapon : '玲珑宝塔',
+                job : ['捉妖','镇场子'],
+                run : function(){
+                    return this.name+'的武器是'+this.weapon+'工作是'+this.job;
+                }
+            }
+            var m1 = new Monster();
+            var m2 = new Monster();
+            m1.job.push('111');
+            m2.job.push('222');
+            console.info(m1.run());//托塔天王的武器是玲珑宝塔工作是捉妖,镇场子,111,222
+            console.info(m2.run());//托塔天王的武器是玲珑宝塔工作是捉妖,镇场子,111,222
+            //并没有明确分工...
+        </pre>
+        <p>创建对象的方法 -- 构造函数和原型组合模式</p>
+        <pre>
+            //目前最为常用的创建对象的方式:用构造函数定义对象的所有非函数属性，用原型方式定义对象的函数属性（方法）。
+            //结果是所有函数都只创建一次，而每个对象都具有自己的对象属性实例。
+            function Monster(name,arr){
+                constructor : Monster;
+                this.name = name;
+                this.job = arr;
+            }
+            Monster.prototype = {
+                run : function(){
+                    return this.name+'的工作是'+this.job;
+                }
+            }
+            var m1 = new Monster('小旋风',['巡山','打更','砍柴']);
+            var m2 = new Monster('小钻风',['巡山','打更','挑水']);
+            console.info(m1.run());//小旋风的工作是巡山,打更,砍柴
+            console.info(m2.run());//小钻风的工作是巡山,打更,挑水
+            //不同的实例既可以共享Monster.prototype的方法,也可以有自己独有的属性
+            //瑕疵:属性方法是分离的,封装性比较差,并不影响使用
+        </pre>
+        <p>创建对象的方法 -- 动态原型模式</p>
+        <pre>
+            function Monster(name,arr){
+                this.name = name;
+                this.job = arr;
+                if(typeof thi.run!='function'){ //不判断则实例一次初始化一次
+                    Monster.prototype.run=function(){
+                        return this.name+'的工作是'+this.job;
+                    }
+                }
+            }
+            var m1 = new Monster('小旋风',['巡山','打更','砍柴']);
+            var m2 = new Monster('小钻风',['巡山','打更','挑水']);
+            console.info(m1.run()); //小旋风的工作是巡山,打更,砍柴
+            console.info(m2.run()); //小钻风的工作是巡山,打更,挑水
+        </pre>
+        <p>继承</p>
+        <pre>
+            //猴子(父类/超类/基类)-->会法术的猴子(了类型/派生类)-->孙悟空(实例)
+            //一旦确定了两个类的继承关系,就包含三个意思:
+            //1.子类的实例可以共享父类的方法;
+            //2.子类可以覆盖或扩展父类的方法;
+            //3.子类和父类都是子类型实例的类型
+
+            //常用1.对象冒充(构造函数绑定)
+            //使用call或apply方法(实质上是改变了this指针的方向)继承基类
+            function Monkey(_type,_home){
+                this.type = _type;
+                this.home = _home;
+                this.say = function(){
+                    alert('我是一只猴子住在' + this.home)
+                }
+            }
+            function Magic_monkey(_type,_home,arr){
+                Monkey.call(this,_type,_home);
+                //Monkey.apply(this,[_type,_home]);
+                this.skill = arr;
+            }
+            var wukong = new Magic_monkey('猴子','花果山',['七十二变','筋斗云']);
+            console.info(wukong.type + wukong.home + wukong.skill); //猴子花果山七十二变,筋斗云
+            wukong.say();
+            //缺点:每生成一个实例,都会增加一些内存
+
+            //常用2.原型链继承
+            //使用prototype属性(常用)
+            function Monkey(){};
+            Monkey.prototype.type = '猴子';
+            Monkey.prototype.say = function(){alert('我是一只猴子')};
+            function Magicmonkey(){};
+            //将Magicmonkey的prototype对象指向一个Monkey的实例
+            //相当于删除了prototype对象原先的值,然后赋予一个新值
+            //不能继承多个类,后边的会覆盖前边的/不能传递参数
+            Magicmonkey.prototype = new Monkey();
+            Magicmonkey.prototype.skill = '法术'; //必须在继承之后
+            var wukong  = new Magicmonkey();
+            console.info(wukong.type);
+            console.info(wukong.skill);
+            wukong.say();
+
+            //常用3.混合模式
+            //用对象冒充继承构造函数的属性,用原型链继承prototype对象的方法
+            function Monkey(_type,_home){
+                this.type = _type;
+                this.home = _home;
+            }
+            Monkey.prototype.say = function(){
+                alert('我是一只猴子家住在' + this.home);
+            }
+            function Magicmonkey(_type,_home,_skill){
+                //用对象冒充继承monkey类的type属性
+                Monkey.call(this,_type,_home);
+                this.skill = _skill;
+            }
+            //用原型链继承Monkey类的方法
+            Magicmonkey.prototype = new Monkey();
+            //子类覆盖父类的方法
+            Magicmonkey.prototype.say = function(){
+                alert('我会的技能有'+this.skill);
+            }
+            var wukong = new Magicmonkey('猴子','花果山',['七十二变','筋斗云']);
+            console.info(wukong.type);
+            console.info(wukong.home);
+            wukong.say();
+        </pre>
+        <p>练习1 -- 具有默认值的构造函数</p>
+        <pre>
+            function Hero(type,home,weapon){
+                this.type = type;
+                this.home = home;
+                //if(weapon == undefined){
+                //	this.weapon = '剑';
+                //}else{
+                //	this.weapon = weapon;
+                //}
+                this.weapon = weapon?weapon:'剑';
+            }
+            //var user = new Hero('战士','新手村');
+            var user = new Hero('战士','新手村','刀');
+            console.info(user.type + user.home + user.weapon);
+        </pre>
+        <p>练习2 -- 遍历对象属性和方法</p>
+        <pre>
+            function Hero(name,type,home,weapon){
+                this.name = name;
+                this.type = type;
+                this.home = home;
+                this.weapon = weapon?weapon:'剑';
+                this.skill = function(){
+                    console.info(this.name + '向敌人发动了普通攻击');
+                }
+            }
+            var user = new Hero('小白','战士','新手村');
+            console.info('user包含如下属性和方法:');
+            for(var i in user){
+                if(typeof(user[i]) == 'function'){
+                    console.info('方法-'+i + ':' +user[i])
+                }else{
+                    console.info('属性-'+i + ':' +user[i])
+                }
+            }
+        </pre>
+        <p>练习3 -- 属性的添加和删除</p>
+        <pre>
+            function Hero(name,type,home,weapon){
+                this.name = name;
+                this.type = type;
+                this.home = home;
+                this.weapon = weapon?weapon:'剑';
+                this.skill = function(){
+                    console.info(this.name + '向敌人发动了普通攻击');
+                }
+            }
+            var user = new Hero('小白','战士','新手村');
+            //删除
+            delete user.name;
+            delete user.skill;
+            //添加
+            user.sex = '男';
+            console.info('user包含如下属性和方法:');
+            for(var i in user){
+                if(typeof(user[i]) == 'function'){
+                    console.info('方法-'+i + ':' +user[i])
+                }else{
+                    console.info('属性-'+i + ':' +user[i])
+                }
+            }
+        </pre>
+    </div>
+    <div class="box">
+        <h2 data-v=1><span>匿名函数与闭包</span></h2>
+        <p>匿名函数</p>
+        <pre>
+            //普通函数
+            function fn(){
+                alert('我是普通函数');
+            }
+            fn();
+            //匿名函数
+            //情况1把匿名函数赋值给变量
+            var fn = function(){
+                alert('我是匿名函数');
+            }
+            alert(fn); //会装函数表达式弹出
+            fn(); //我是匿名函数
+            //情况2匿名函数通过表达式自我执行
+            (function(){
+                alert('我是匿名函数');
+            })();
+            //普通函数传递参数
+            function myfn(m,n){
+                alert(m + n);
+            }
+            myfn(100,100);
+            //匿名函数传递参数
+            (function(m,n){
+                alert(m + n)
+            })(1000,1000)
+        </pre>
+        <p>闭包</p>
+        <pre>
+            function fn(){
+                return function(){
+                    return '哈哈哈';
+                }
+            }
+            console.info(fn); //输出整个函数表达式
+            console.info(fn()); //输出匿名函数表达式
+            //调用方式1
+            console.info(fn()());
+            //调用方式2
+            var bb = fn();
+            console.info(bb());
+
+            //通过闭包访问局部变量
+            //function fn(){
+            //	var txt = '局部变量X';
+            //}
+            //console.info(txt);//局部变量函数外无法访问
+            function fn(){
+                var txt = '局部变量X';
+                return function(){
+                    return txt;
+                }
+            }
+            console.info(fn()());
+
+            //让局部变量的值始终保持在内存中
+            //通过全局变量来累加
+            var num = 1;
+            function add(){
+                console.info(++num);
+            }
+            //每执行一次累加一次
+            add(); //2
+            add(); //3
+            add(); //4
+            //通过局部变量无法实现累加
+            function add(){
+                var num = 1;
+                console.info(num++);
+            }
+            add(); //1
+            add(); //1
+            add(); //1
+            //通过闭包实现局部变量的累加
+            function add(){
+                var num = 1;
+                return function(){
+                    num++;
+                    console.info(num);
+                }
+            }
+            add()(); //2
+            add()(); //2
+            add()(); //2
+            //add()();add()();add()();无法实现累加每次调用num都会初始化一次
+            var fn = add();//只在这初始化一次
+            fn(); //2
+            fn(); //3
+            fn(); //4
+            fn = null //应及时解除引用,否则会占更多内存
+
+            我叫独孤求败,我在一个山洞里,里面有世界上最好的剑法,还有最好的武器
+            我学习了里面的剑法,拿走了最好的剑.离开了这里.我来到这个江湖,快意恩仇
+            但是从来没有人知道我这把剑的来历,和我这一身武功..
+            山洞-->闭包
+            我-->山洞里唯一一个可以与外界交汇的地方
+            山洞对于外人不存在,只有我才拥有里面的宝藏
+        </pre>
+        <p>循环函数中的匿名函数和闭包</p>
+        <pre>
+            //普通循环
+            function fun(){
+                var arr = [];
+                for(var i= 0;i<5;i++){
+                    arr[i] = '元素'+i;
+                }
+                return arr;
+            }
+            console.info(fun());
+
+            //循环中的匿名函数
+            function fun(){
+                var arr = [];
+                for(var i=0;i<5;i++){
+            //		arr[i] = function(){
+            //			return '元素'+i;
+            //		}
+                    arr[i] = (function(){
+                        return '元素'+i;
+                    })()
+                }
+                return arr
+            }
+            var Bb = fun()
+            console.info(Bb);
+
+            //循环中的闭包
+            function fun(){
+                var arr = [];
+                for(var i = 0;i<5;i++){
+                    arr[i] = function(n){ //1.外层需要参数n..也就是最终的结果
+                        return function(){
+                            return '元素'+n; //3.变量i的当前值会赋值给n
+                        }
+                    }(i); //2.在调用每个匿名函数时传入变量i
+                }
+                return arr
+            }
+            var Bb = fun();
+            for(var i=0;i<5 ;i++){
+                console.info(Bb[i]());
+            }
+        </pre>
+        <p>闭包中的this</p>
+        <pre>
+            //var obj = new Object();
+            //obj.name = 'my obj';
+            //obj.get = function(){
+            //	return this.name
+            //}
+            var obj = {
+                name:'my obj',
+                get:function(){
+                    return this.name
+                }
+            }
+            console.info(obj.get()); //my obj
+            //闭包在运行时指向全局变量 this通常指向window
+            var name = 'The Window';
+            var obj = {
+                name:'my obj',
+                //这里的this指向对象obj
+                get:function(){
+                    //闭包里的this指向window
+                    return function(){
+                        return this.name;
+                    }
+                }
+            }
+            //console.info(obj.get()()); //The Window
+            //使用对象冒充强制改变this指向
+            console.info(obj.get().call(obj)); //my obj
+            //将this赋值给一个变量,闭包访问这个变量
+            var name = 'The Window';
+            var obj = {
+                name:'my obj',
+                get:function(){
+                    var self = this;
+                    return function(){
+                        return self.name;
+                    }
+                }
+            }
+            console.info(obj.get()());  //my obj
+        </pre>
+        <p>模仿块级作用域</p>
+        <pre>
+            function fn(){
+                for(var i =0;i<5;i++){
+                }
+                console.info(i);//i不会因为离开for就失效
+            }
+            fn(); //此时i为5  js没有块级作用域
+
+            //模仿块级作用域
+            function fn(){
+                (function(){
+                    for(var i =0;i<5;i++){
+                }
+                })()
+                console.info(i);//报错：i不存在
+            }
+            fn();
+        </pre>
+        <p>私有变量</p>
+        <pre>
+            //通过构造函数方法传参来访问私有变量
+            function People(_name){
+                var name = _name; //私有变量
+                this.getname = function(){ //对外公共的特权方法
+                    return name;
+                };
+            }
+            var p = new People('张三');
+            console.info(p.getname());
+            //静态私有变量
+            (function(){
+                var name = '张三';
+                User = function(){};
+                User.prototype.getName = function(){
+                    return name;
+                };
+                User.prototype.setName = function(val){
+                    name = val;
+                }
+            })()
+            var VIP1 = new User();
+            console.info(VIP1.getName()); //张三
+            VIP1.setName('李四');
+            console.info(VIP1.getName()); //李四
+            var VIP2 = new User();
+            console.info(VIP2.getName()); //李四
+            //这种方式创建的私有变量因为使用了原型而实现共享
+            //同时由于共享,实例也就没有自己的私有变量
+        </pre>
+    </div>
+    <div class="box">
+        <h2 data-v=1><span>JSON</span></h2>
+        <p>JSON解析与序列化</p>
+        <pre>
+            //JSON解析
+            var jsonstr = '[{"name":"xikaifei","age":24},{"name":"wuwei","age":24},{"name":"liyuhui","age":23}]';
+            console.info(typeof(jsonstr)); //string
+            //eval(); //eval会执行里面的js代码,并不使用
+            //var jsonobj = eval(jsonstr);
+            //console.info(jsonobj)
+            //JSON.parse(); //不支持IE8以下
+            var jsonobj = JSON.parse(jsonstr);
+            console.info(jsonobj[0].name); //xikaifei
+            console.info(typeof(jsonobj)); //object;
+            var jsonobj2 = JSON.parse(jsonstr,function(key,value){
+                if(key == 'name'){
+                    return 'vip会员:'+value;
+                }else{
+                    return value;
+                }
+            })
+            console.info(jsonobj2[0].name); //vip会员:xikaifei
+
+            //JSON序列化
+            var jsonobj = [{name:'xikaife',age:24,lv:3},{name:'wuwei',age:24,lv:4},{name:'liyuhui',age:23,lv:5}];
+            console.info(jsonobj[0].name); //xikaifei
+            var jsonstr = JSON.stringify(jsonobj);
+            console.info(typeof(jsonobj)); //object
+            console.info(typeof(jsonstr)); //string
+            var jsonstr2 = JSON.stringify(jsonobj,['name','age']); //筛选
+            var jsonstr3 = JSON.stringify(jsonobj,function(key,value){
+                if(key == 'lv'){
+                    return '等级:'+value;
+                }else{
+                    return value;
+                }
+            });
+            console.info(jsonstr2);
+            console.info(jsonstr3);
+            //第三个参数表示缩进
+            var jsonstr4 = JSON.stringify(jsonobj,null,4);
+            console.info(jsonstr4);
+        </pre>
+    </div>
+</div>
+</body>
+<script src='../plug/jquery-1.11.1.min.js'></script>
+<script>
+    $('body').append('<div class="slide-box"><div class="slide"><h1>JavaScript笔记整理</h1><ul></ul></div></div>');
+    $('.main').prepend('<div class="box"><h2><span><i class="icon-home"></i>Dashboard</span></h2><div class="nav-box"></div></div>');
+    $('.main .box').each(function () {
+        var thisText = $(this).find('h2 span').html();
+        var dataV = $(this).find('h2').attr('data-v');
+        if (dataV == 0) {
+            thisText = '<em>[基础篇] </em>' + thisText;
+        } else if (dataV == 1) {
+            thisText = '<em>[进阶篇] </em>' + thisText;
+        } else if (dataV == 2) {
+            thisText = '<em>[高级篇] </em>' + thisText;
+        }
+        $('.slide-box ul').append('<li>' + thisText + '</li>');
+    });
+    $('.main .box p').each(function(i){
+        $('.nav-box').append('<span>'+$(this).html()+'</span>');
+    })
+    $(document).on('click','.nav-box span',function(){
+        var thisIndex = $(this).index();
+        var offsetTop =  $('.main .box p').eq(thisIndex).offset().top;
+        $('html,body').stop(false).animate({scrollTop: offsetTop-10}, 300);
+    })
+    //pre加行号
+    $('pre').each(function () {
+        var pre = $(this);
+        var arr = pre.html().split("\n");
+        var text = "<div class='pre-ol'><ol>";
+        $.each(arr, function (i, item) {
+            if (item.trim() != "") {
+                text += "<li>" + item + "</li>";
+            } else {
+                text += "<li>" + " " + "</li>";
+            }
+            pre.html(text);
+        });
+        text += "</ol></div>";
+    });
+    $(document).on('click','.slide-box ul li',function(){
+        var thisIndex = $(this).index();
+        var offsetTop = $('.main .box').eq(thisIndex).offset().top;
+        $('html,body').stop(false).animate({scrollTop: offsetTop-10}, 300);
+    });
+    function _scroll(){
+        var scrollTop=$(document).scrollTop();
+        $('.main .box').each(function(i){
+            if($('.main .box').eq(i).offset().top-scrollTop<=30){
+                $('.slide-box ul li').eq(i).addClass('on').siblings().removeClass('on');
+            }
+        })
+    }
+    $(document).scroll(function() {
+        _scroll();
+    })
+    _scroll();
+    //日历
+    var date = new Date();
+    var year = date.getFullYear();//年
+    var currentDay = date.getDate();//日
+    var month = date.getMonth();//月
+    var weeks = ['日', '一', '二', '三', '四', '五', '六'];//周
+    var months = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];//月
+    var days = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];//天
+    date.setDate(1);
+    var week = date.getDay();//0为周日.6为周六
+    var monthDays;//保存2月份天数
+    var yearFlag = 0;//闰年标记
+    var f = 1;//日期从1开始
+    if ((year % 4 == 0 && year % 100 != 0) || (year % 400 == 0)) {
+        yearFlag = 1;
+    } else {
+        yearFlag = 0;
+    }
+    if (month == 1) {
+        monthDays = days[month] + yearFlag;
+    } else {
+        monthDays = days[month];
+    }
+    var rows = Math.floor((week + monthDays + 6) / 7);//表格行数
+    $('.dateBox').append('<table>' +
+            '<tr class="dateTitile">' +
+            '<td colspan="7">' + year + '年' + (month + 1) + '月' + currentDay + '日' + '</td>' +
+            '</tr>' +
+            '</table>');
+    $('.dateBox table').append('<tr class="weeks"></tr>');
+    for (var index in weeks) {
+        $('.dateBox .weeks').append('<td>' + weeks[index] + '</td>');
+    }
+    for (var i = 0; i < rows; i++) {
+        var td = '';
+        for (var j = 0; j < 7; j++) {
+            if (i == 0 && j < week) {
+                td += '<td></td>';
+            } else {
+                if (f > monthDays) {
+                    td += '<td></td>';
+                } else {
+                    if (f == currentDay) {
+                        td += '<td class="on">' + f + '</td>';
+                    } else {
+                        td += '<td>' + f + '</td>';
+                    }
+                    f++;
+                }
+            }
+        }
+        $('.dateBox table').append('<tr>' + td + '</tr>');
+    }
+</script>
+</html>
